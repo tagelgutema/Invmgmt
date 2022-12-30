@@ -7,16 +7,20 @@ import org.springframework.web.bind.annotation.RestController;
 @Controller
 public class ApplicationController {
 
+    @GetMapping("/index2")
+    public String testindex(){
+        return "index2";
+    }
     @GetMapping("/index")
     public String home()
     {
         return "index";
     }
 
-    @GetMapping("/widgets")
-    public String widget()
+    @GetMapping("/_layout")
+    public String layoutpage()
     {
-        return "widgets";
+        return "_layout";
     }
 
 
