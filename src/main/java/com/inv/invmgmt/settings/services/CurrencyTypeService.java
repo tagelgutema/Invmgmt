@@ -12,10 +12,10 @@ public interface CurrencyTypeService {
 
 	List<CurrencyType> searchByCurrencyType(String keyword);
 	void saveCurrencyType(CurrencyType currencyType);
-	void addNewCurrencyType(CurrencyType CurrencyType);
+	void addNewCurrencyType(CurrencyType currencyType);
 	CurrencyType searchCurrencyTypeById(Integer id);
 	void deleteUsingId(Integer id);
-	CurrencyType updateCurrencyType(CurrencyType CurrencyType);
+	CurrencyType updateCurrencyType(CurrencyType currencyType);
 	Page<CurrencyType> findPaginated(int pageNo, int pageSize, String sortField, String sortDirection);
 	
 }

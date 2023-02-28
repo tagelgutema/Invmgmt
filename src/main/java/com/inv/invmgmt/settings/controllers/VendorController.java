@@ -20,14 +20,14 @@ public class VendorController {
 
 
 	@GetMapping("/vendorsAdd")
-	public String vendorsAdd() {return "/vendors/vendorAdd";}
+	public String vendorsAdd() {return "settings/vendors/vendorAdd";}
 
 
 	@GetMapping("/vendors")
 	public String getIndexDepartment(Model model) {
 		List<Vendor> vendors = vendorService.getAll();
 		model.addAttribute("vendors", vendors);
-		return "vendors/index";
+		return "settings/vendors/index";
 	}
 
 
@@ -53,7 +53,7 @@ public class VendorController {
 		} else{
 			vendors= vendorService.searchByVendor(keyword);
 			model.addAttribute("vendors",vendors);
-			return "vendors/vendors";}
+			return "settings/vendors/vendors";}
 	}
 
 	@RequestMapping(value ="/vendors/delete/{id}", method = {RequestMethod.GET, RequestMethod.DELETE})
@@ -67,7 +67,7 @@ public class VendorController {
 
 		Vendor vendor =vendorService.searchVendorById(id);
 		model.addAttribute("vendor", vendor);
-		return "vendors/vendorEdit";
+		return "settings/vendors/vendorEdit";
 	}
 
 	@GetMapping("/vendorDetail/{id}")
@@ -75,7 +75,7 @@ public class VendorController {
 
 		Vendor vendor =vendorService.searchVendorById(id);
 		model.addAttribute("vendor", vendor);
-		return "vendors/vendorDetail";
+		return "settings/vendors/vendorDetail";
 	}
 
 
@@ -114,7 +114,7 @@ public class VendorController {
 		model.addAttribute("toggleSortDir",sortDir.equals("asc")? "desc":"asc");
 
 		model.addAttribute("vendors", vendors);
-		return  "vendors/vendors";
+		return  "settings/vendors/vendors";
 	}
 
 	@GetMapping("/vendorsList/page")

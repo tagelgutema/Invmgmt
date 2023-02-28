@@ -9,10 +9,9 @@ import java.util.List;
 public interface DepartmentService {
 
 
-       List <Department> getAll();
-
+	List <Department> getAll();
 	List<Department> searchByDepartment(String keyword);
-	void saveDepartment(Department region);
+	void saveDepartment(Department department);
 	void addNewDepartment(Department department);
 	Department searchDepartmentById(Integer id);
 	void deleteUsingId(Integer id);

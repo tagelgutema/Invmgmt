@@ -20,12 +20,12 @@ public class DepartmentController {
 	public String getIndexDepartment(Model model) {
 		List<Department> departments = departmentService.getAll();
 		model.addAttribute("departments", departments);
-		return "departments/index";
+		return "settings/departments/index";
 	}
 
 	@GetMapping("/departmentAdd")
 	public String departmentAdd() {
-		return "departments/departmentAdd";
+		return "settings/departments/departmentAdd";
 	}
 
 	@PostMapping("/saveDepartments")
@@ -33,7 +33,6 @@ public class DepartmentController {
 		departmentService.saveDepartment(department);
 		return "redirect:/departmentsList/page";
 	}
-
 
 	@GetMapping("/clearDepartmentSearch")
 	public String clearSearch(Model model){
@@ -51,7 +50,7 @@ public class DepartmentController {
 		} else{
 			departments= departmentService.searchByDepartment(keyword);
 			model.addAttribute("departments",departments);
-			return "departments/departments";}
+			return "settings/departments/departments";}
 	}
 
 	@RequestMapping(value ="/departments/delete/{id}", method = {RequestMethod.GET, RequestMethod.DELETE})
@@ -65,7 +64,7 @@ public class DepartmentController {
 
 		Department department =departmentService.searchDepartmentById(id);
 		model.addAttribute("department", department);
-		return "departments/departmentEdit";
+		return "settings/departments/departmentEdit";
 	}
 
 	@GetMapping("/departmentDetail/{id}")
@@ -73,13 +72,13 @@ public class DepartmentController {
 
 		Department department =departmentService.searchDepartmentById(id);
 		model.addAttribute("department", department);
-		return "departments/departmentDetail";
+		return "settings/departments/departmentDetail";
 	}
 
 
 	@PostMapping("/updateDepartment/{id}")
 	public String updateDepartment(@PathVariable(value="id") Integer id ,
-							   @ModelAttribute("department") Department department,Model model){
+							   @ModelAttribute("Department") Department department,Model model){
 
 		//get region from database by id
 		Department existingDepartment= departmentService.searchDepartmentById(id);
@@ -109,7 +108,7 @@ public class DepartmentController {
 		model.addAttribute("toggleSortDir",sortDir.equals("asc")? "desc":"asc");
 
 		model.addAttribute("departments", departments);
-		return  "departments/departments";
+		return  "settings/departments/departments";
 	}
 
 	@GetMapping("/departmentsList/page")

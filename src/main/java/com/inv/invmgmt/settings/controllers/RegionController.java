@@ -23,12 +23,12 @@ public class RegionController {
 	public String getIndexRegion(Model model) {
 		List<Region> regions = regionService.getAll();
 		model.addAttribute("region", regions);
-		return "settings/index";
+		return "settings/regions/index";
 	}
 
 	@GetMapping("/regionAdd")
 	public String regionAdd() {
-	return "settings/regionAdd";
+	return "settings/regions/regionAdd";
 	}
 
 	@PostMapping("/saveRegions")
@@ -60,7 +60,7 @@ public class RegionController {
 		} else{
 		regions= regionService.searchByRegion(keyword);
 		model.addAttribute("regions",regions);
-			return "settings/regions";}
+			return "settings/regions/regions";}
 	}
 
 	@RequestMapping(value ="/regions/delete/{id}", method = {RequestMethod.GET, RequestMethod.DELETE})
@@ -74,7 +74,7 @@ public class RegionController {
 
 		Region region =regionService.searchRegionById(id);
 		model.addAttribute("region", region);
-		return "settings/regionEdit";
+		return "settings/regions/regionEdit";
 	}
 
 	@GetMapping("/regionDetail/{id}")
@@ -82,7 +82,7 @@ public class RegionController {
 
 		Region region =regionService.searchRegionById(id);
 		model.addAttribute("region", region);
-		return "settings/regionDetail";
+		return "settings/regions/regionDetail";
 	}
 
 
@@ -118,7 +118,7 @@ public class RegionController {
 		model.addAttribute("toggleSortDir",sortDir.equals("asc")? "desc":"asc");
 
 		model.addAttribute("regions", regions);
-		return  "settings/regions";
+		return  "settings/regions/regions";
 	}
 
 	@GetMapping("/regionsList/page")

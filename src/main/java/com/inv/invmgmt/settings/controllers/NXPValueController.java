@@ -48,7 +48,7 @@ public class NXPValueController {
 
 		if  (keyword==null){
 
-			return findPaginated(1,model,"deptId","asc");
+			return findPaginated(1,model,"nxpValueId","asc");
 		} else{
 			nxpValues= nxpValueService.searchByNXPValue(keyword);
 			model.addAttribute("nxpValues",nxpValues);

@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "tblNXpValue")
+@Table(name = "tblNxpValue")
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "nxpValueId")
 public class NXPValue {
 

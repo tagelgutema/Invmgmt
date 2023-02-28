@@ -7,7 +7,7 @@ import com.mysql.cj.x.protobuf.MysqlxDatatypes;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "tblSERValue")
+@Table(name = "tblSerValue")
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "serId")
 public class SERValue {
 

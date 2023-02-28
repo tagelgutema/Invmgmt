@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
+
 public interface SERValueRepository extends JpaRepository <SERValue,Integer>{
 	@Query(value= "select s  from  SERValue s where " +
 			"s.serMonth LIKE %?1%")

@@ -12,7 +12,6 @@ public class CurrencyType {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "currencyType_id")
 	private Integer currencyTypeId;
 
 	@Column(name = "currencyType_name")
@@ -20,15 +19,6 @@ public class CurrencyType {
 
 	@Column(name = "currencyType_Description")
 	private String currencyTypeDescription;
-
-	public CurrencyType(Integer currencyTypeId, String currencyTypeName, String currencyTypeDescription) {
-		this.currencyTypeId = currencyTypeId;
-		this.currencyTypeName = currencyTypeName;
-		this.currencyTypeDescription = currencyTypeDescription;
-	}
-
-	public CurrencyType() {
-	}
 
 	public Integer getCurrencyTypeId() {
 		return currencyTypeId;
