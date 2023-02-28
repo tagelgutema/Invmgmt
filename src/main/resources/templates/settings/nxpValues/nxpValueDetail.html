@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="https://www.thymeleaf.org"
+      layout:decorate="~{_layout}">
+
+<body>
+<div layout:fragment="content">
+
+    <div class="row">
+        <form  class="form-horizontal"  th:object="${nxpValue}" method="POST">
+            <div class="col-lg-12">
+                <div class="container" style="width: 70%">
+                    <div class="row">
+                        <div class="col-lg-9">
+                            <section class="panel">
+                                <header class="panel-heading">
+                                    Edit Currency Type Record
+                                </header>
+                                <div class="panel-body">
+                                    <div class="form-group">
+
+                                            <label class="control-label col-sm-4">NXP Value Id</label>
+                                        <div class="col-sm-6">
+                                            <input  type="text" th:field="*{nxpValueId}" class="form-control" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">NXP Value</label>
+                                        <div class="col-sm-6">
+                                            <input type="text"  th:field="*{nxpValue}" size="16" class="form-control" readonly >
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">NXP Value Year</label>
+                                        <div class="col-sm-6">
+                                            <input  type="text" th:field="*{nxpValueYear}" size="16" class="form-control" readonly >
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">NXP Value Description</label>
+                                        <div class="col-sm-6">
+                                            <input  type="text" th:field="*{nxpValueDescription}" size="16" class="form-control" readonly >
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                            <section class="panel">
+                                <div class="panel-body">
+                                    <button disabled    class="btn"> Save </button>
+                                    <a href="/nxpValuesList/page" class="btn btn-warning"> Exit </a>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+</body>
+</html>
