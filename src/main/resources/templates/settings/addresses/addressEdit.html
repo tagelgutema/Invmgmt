@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="https://www.thymeleaf.org"
+      layout:decorate="~{_layout}">
+
+<body>
+<div layout:fragment="content">
+
+    <div class="row">
+        <form  class="form-horizontal"  th:action="@{/updateAddress/{id}(id=${address.addressId})}"  th:object="${address}"  method="POST">
+            <div class="col-lg-12">
+                <div class="container" style="width: 70%">
+                    <div class="row">
+                        <div class="col-lg-9">
+                            <section class="panel">
+                                <header class="panel-heading">
+                                    Edit Region Record
+                                </header>
+                                <div class="panel-body">
+                                    <div class="form-group">
+
+                                        <div class="col-sm-6">
+                                            <input  type="hidden" th:field="*{addressId}" >
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">District Name</label>
+                                        <div class="col-sm-6">
+                                            <input type="text"  th:field="*{districtName}" size="16" class="form-control" required >
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">Woreda</label>
+                                        <div class="col-sm-6">
+                                            <input type="text"  th:field="*{woreda}" size="16" class="form-control"  >
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">Kebele</label>
+                                        <div class="col-sm-6">
+                                            <input type="text"  th:field="*{kebele}" size="16" class="form-control"  >
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">House No</label>
+                                        <div class="col-sm-6">
+                                            <input type="text"  th:field="*{houseNo}" size="16" class="form-control"  >
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">Address Description</label>
+                                        <div class="col-sm-6">
+                                            <input  type="text" th:field="*{addressDescription}" size="16" class="form-control" required >
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">Region of the Address </label>
+                                        <div class="col-sm-6">
+                                            <select  class="form-control" id="ddlAddressAdd"  name="regionid">
+                                                <option th:text="${null}"></option>
+                                                <option th:each="region:${listRegions}"
+                                                        th:value="${region.regionId}"
+                                                        th:selected="${address.regionid}==${region.regionId} ? TRUE : FALSE"
+                                                        th:text="${region.regionName}">
+                                                </option>
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                            <section class="panel">
+                                <div class="panel-body">
+                                    <button type="submit" class="btn btn-success"> Save </button>
+                                    <a href="/addressesList/page" class="btn btn-warning"> Exit </a>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+</body>
+</html>

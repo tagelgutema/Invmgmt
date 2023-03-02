@@ -3,7 +3,17 @@ package com.inv.invmgmt.settings.models;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+import java.util.List;
+
+
+@Getter @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "tblRegion")
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "regionId")
@@ -20,36 +30,8 @@ public class Region {
 	@Column(name = "region_Description")
 	private String regionDescription;
 
-	public void setRegionId(int regionId) {
-		this.regionId = regionId;
-	}
+	@OneToMany(mappedBy = "regionid", cascade = CascadeType.ALL)
+	private List<Address> address;
 
-	public void setRegionName(String regionName) {
-		this.regionName = regionName;
-	}
 
-	public void setRegionDescription(String regionDescription) {
-		this.regionDescription = regionDescription;
-	}
-
-	public int getRegionId() {
-		return regionId;
-	}
-
-	public String getRegionName() {
-		return regionName;
-	}
-
-	public String getRegionDescription() {
-		return regionDescription;
-	}
-
-	@Override
-	public String toString() {
-		return "Region{" +
-				"regionId=" + regionId +
-				", regionName='" + regionName + '\'' +
-				", regionDescription='" + regionDescription + '\'' +
-				'}';
-	}
 }

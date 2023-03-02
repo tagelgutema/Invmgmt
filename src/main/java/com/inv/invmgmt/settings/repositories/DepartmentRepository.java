@@ -15,9 +15,7 @@ public interface DepartmentRepository extends JpaRepository<Department,Integer> 
 	List<Department> searchByDepartment(String keyword);
 
 
-  /*  @Query(value="SELECT r FROM Region r WHERE CONCAT(r.regionId or r.regionName or r.regionDescription) LIKE %?1%")
-    List<Region> searchByRegion(String keyword);
-*/
+
 }
 
 

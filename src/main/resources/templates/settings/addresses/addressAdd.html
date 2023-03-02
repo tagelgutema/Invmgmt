@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="https://www.thymeleaf.org"
+      layout:decorate="~{_layout}">
+
+<body>
+<div layout:fragment="content">
+
+    <div class="row">
+        <form  class="form-horizontal"  th:action="@{/saveAddresses}" method="POST">
+            <div class="col-lg-12">
+                <div class="container" style="width: 70%">
+                    <div class="row">
+                        <div class="col-lg-9">
+                            <section class="panel">
+                                <header class="panel-heading">
+                                    Add Address Record
+                                </header>
+                                <div class="panel-body">
+
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">District Name</label>
+                                        <div class="col-sm-6">
+                                            <input name="districtName" type="text" size="16" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">Woreda</label>
+                                        <div class="col-sm-6">
+                                            <input name="woreda" type="text" size="16" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">Kebele</label>
+                                        <div class="col-sm-6">
+                                            <input name="kebele" type="text" size="16" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">House No</label>
+                                        <div class="col-sm-6">
+                                            <input name="houseNo" type="text" size="16" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">Address Description</label>
+                                        <div class="col-sm-6">
+                                            <input name="addressDescription" type="text"  size="16" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">Region of the Address </label>
+                                        <div class="col-sm-6">
+                                            <select  class="form-control" id="ddlAddressAdd"  name="regionid">
+                                                <option>-SELECT-</option>
+                                                <option th:each="region:${regions}"
+                                                        th:value="${region.regionId}"
+                                                        th:text="${region.regionName}">
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                            <section class="panel">
+                                <div class="panel-body">
+                                    <button type="submit" class="btn btn-success"> Save </button>
+                                    <a href="/addressesList/page" class="btn btn-warning"> Exit </a>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+</body>
+</html>
