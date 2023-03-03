@@ -8,6 +8,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 
 @Getter @Setter
 @AllArgsConstructor
@@ -42,6 +44,8 @@ public class Address {
 	private Region region;
 
 	private Integer regionid;
+
+
 
 
 }

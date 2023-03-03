@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="https://www.thymeleaf.org"
+      layout:decorate="~{_layout}">
+
+<body>
+
+<div layout:fragment="content">
+
+
+  <div class="row">
+
+    <div class="col-lg-12">
+      <section class="panel">
+        <div class="panel-body">
+          <div class="row">
+             <div class="col-lg-6">
+               <a href="/employeeTypeAdd"  class="btn btn-primary">
+                 Add New EmployeeType
+               </a>
+             </div>
+            <form th:action="@{/searchEmployeeType}" method="get">
+            <div class="col-lg-3">
+              <input type="text"  name="keyword" class="form-control" required>
+            </div>
+            <div class="col-lg-2">
+              <input type="submit"  value="Search" class="btn btn-success form-control">
+            </div>
+            </form>
+            <a th:href="@{/clearEmployeeTypeSearch}" class="btn btn-primary" >Clear Search</a>
+
+
+        </div>
+      </div></section>
+      <section class="panel">
+        <header class="panel-heading">
+        <h1>List of EmployeeTypes</h1>
+        </header>
+        <table class="table table-striped table-advance table-hover">
+          <tbody>
+          <tr>
+            <th><i class="icon_profile"></i>
+              <a th:href="@{'/employeeTypesList/page/' + ${currentPage} +
+             '?sortField=employeeTypeId&sortDir=' + ${toggleSortDir}}">EmployeeType ID</a>
+            </th>
+            <th><i class="icon_calendar"></i>
+              <a th:href="@{'/employeeTypesList/page/' + ${currentPage} +
+             '?sortField=employeeTypeName&sortDir=' + ${toggleSortDir}}">EmployeeType Name</a>
+            </th>
+            <th><i class="icon_mail_alt"></i><a th:href="@{'/employeeTypesList/page/' + ${currentPage} +
+             '?sortField=employeeTypeDescription&sortDir=' + ${toggleSortDir}}"> EmployeeType Description </a>
+            </th>
+            <th><i class="icon_cogs"></i> Action</th>
+          </tr>
+          <tr  th:each="employeeType:${employeeTypes}">
+            <td  th:text="${employeeType.employeeTypeId}"></td>
+            <td  th:text="${employeeType.employeeTypeName}"></td>
+            <td  th:text="${employeeType.employeeTypeDescription}"></td>
+            <td>
+              <div class="btn-group">
+                <a class="btn btn-primary" th:href="@{/employeeTypeDetail/{id}(id=${employeeType.employeeTypeId})}"><i class="icon_plus_alt2"></i></a>
+                <a class="btn btn-success"
+                  th:href="@{/employeeTypeEdit/{id}(id=${employeeType.employeeTypeId})}"><i class="icon_check_alt2"></i></a>
+                <a class="btn btn-danger"
+                   onclick="return confirm('Are you sure to delete this record?')"
+                   th:href="@{'/employeeTypes/delete/'+ ${employeeType.employeeTypeId}}"><i class="icon_close_alt2"></i></a>
+
+              </div>
+            </td>
+          </tr>
+
+          </tbody>
+        </table>
+        &nbsp;<div th:if="${totalPages > 1 }"> &nbsp;
+       <footer style="font-size: large" class="panel-footer" >
+
+         <nav aria-label="Page navigation example">
+          <p> Total Items = [[${totalItems}]] :   Page  [[${currentPage}]]  of  [[${totalPages}]]</p>
+           <ul class="pagination justify-content-center">
+             <li class="page-item" >
+                <a class="page-link" th:if="${currentPage>1}"  th:href="@{'/employeeTypesList/page/1' + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">First</a>
+               <span th:unless="${currentPage>1}">First</span>
+             </li>
+             <li class="page-item">
+               <a class="page-link" th:if="${currentPage>1}" th:href="@{'/employeeTypesList/page/' + ${currentPage-1} +
+               '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Previous</a>
+               <span th:unless="${currentPage>1}">Previous</span>
+             </li>
+             <li class="page-item"  th:each="i: ${#numbers.sequence(1,totalPages)}" th:classappend="${currentPage==i ? 'active':''}" >
+                 <a class="page-link"    th:if="${currentPage !=i }" th:href="@{'/employeeTypesList/page/' + ${i} +
+               '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">[[${i}]]</a>
+                 <span th:unless="${currentPage!=i}">[[${i}]]</span>&nbsp;
+
+             </li>
+             <li class="page-item">
+
+               <a class="page-link"  th:if="${currentPage < totalPages}"  th:href="@{'/employeeTypesList/page/' + ${currentPage+1} +
+               '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Next</a>
+               <span th:unless="${currentPage < totalPages}">Next</span> &nbsp; &nbsp;
+
+             </li>
+             <li class="page-item">
+
+               <a  class="page-link" th:if="${currentPage < totalPages}" th:href="@{'/employeeTypesList/page/' + ${totalPages}+
+               '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Last</a>
+               <span th:unless="${currentPage < totalPages}">Last</span> &nbsp; &nbsp;
+
+             </li>
+
+           </ul>
+
+         </nav>
+         &nbsp; &nbsp;
+
+
+       </footer>
+    </div>
+      </section>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

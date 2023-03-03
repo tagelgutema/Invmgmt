@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="https://www.thymeleaf.org"
+      layout:decorate="~{_layout}">
+
+<body>
+<div layout:fragment="content">
+
+    <div class="row">
+        <form  class="form-horizontal"  th:action="@{/saveEmployees}" method="POST">
+            <div class="col-lg-12">
+                <div class="container" style="width: 70%">
+                    <div class="row">
+                        <div class="col-lg-9">
+                            <section class="panel">
+                                <header class="panel-heading">
+                                    Add Employee Record
+                                </header>
+                                <div class="panel-body">
+
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">Employee PIN Number </label>
+                                        <div class="col-sm-6">
+                                            <input name="pinNo" type="text" size="16" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">Employee First Name</label>
+                                        <div class="col-sm-6">
+                                            <input name="firstName" type="text"  size="16" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">Employee Middle Name</label>
+                                        <div class="col-sm-6">
+                                            <input name="middleName" type="text"  size="16" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">Employee Last Name</label>
+                                        <div class="col-sm-6">
+                                            <input name="lastName" type="text"  size="16" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">Employee Email</label>
+                                        <div class="col-sm-6">
+                                            <input name="email" type="text"  size="16" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">Employee Telephone No</label>
+                                        <div class="col-sm-6">
+                                            <input name="phoneNo" type="text"  size="16" class="form-control" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">Employee Address</label>
+                                        <div class="col-sm-6">
+                                            <input name="addressid" type="text"  size="16" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">Employee Job Title</label>
+                                        <div class="col-sm-6">
+                                            <input name="jobtitleid" type="text"  size="16" class="form-control" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">Employee Type</label>
+                                        <div class="col-sm-6">
+                                            <input name="employeetypeid" type="text"  size="16" class="form-control" required>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </section>
+                            <section class="panel">
+                                <div class="panel-body">
+                                    <button type="submit" class="btn btn-success"> Save </button>
+                                    <a href="/employeesList/page" class="btn btn-warning"> Exit </a>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+</body>
+</html>

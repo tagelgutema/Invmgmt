@@ -23,11 +23,11 @@ public class ApplicationController {
         return "_layout";
     }
 
-    @GetMapping("/employees")
+   /* @GetMapping("/employees")
     public String employeePage()
     {
         return  "/employees/index";
-    }
+    }*/
     @GetMapping("/Settings")
     public String settingsPage()
     {

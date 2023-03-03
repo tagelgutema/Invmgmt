@@ -1,6 +1,5 @@
 package com.inv.invmgmt.settings.controllers;
 
-
 import com.inv.invmgmt.settings.models.Address;
 import com.inv.invmgmt.settings.models.Region;
 import com.inv.invmgmt.settings.services.AddressService;
@@ -39,6 +38,7 @@ public class AddressController {
 	@GetMapping("/addressAdd")
 	public String addressAdd(Model model) {
 		addModelAttribute(model);
+
 		return "settings/addresses/addressAdd";
 	}
 
@@ -75,13 +75,13 @@ public class AddressController {
 
 	@GetMapping("/addressEdit/{id}")
 	public String editAddress(@PathVariable(value="id") Integer id ,Model model){
-
+		//addModelAttribute(model);
 		Address address =addressService.searchAddressById(id);
-		//Integer regId=address.getRegionid();
-		List <Region> listRegions= regionService.getAll();
-		//Region sRegion=regionService.searchRegionById(regId);
+		Integer regId=address.getRegionid();
+		List <Region> region= regionService.getAll();
+		//Region region=regionService.searchRegionById(regId);
 		model.addAttribute("address", address);
-		model.addAttribute("listRegions",listRegions);
+		model.addAttribute("regions",region);
 
 		return "settings/addresses/addressEdit";
 	}
@@ -89,18 +89,15 @@ public class AddressController {
 	@GetMapping("/addressDetail/{id}")
 	public String detailAddress(@PathVariable(value="id") Integer id ,Model model){
 
-
+		//addModelAttribute(model);
 
 		Address address =addressService.searchAddressById(id);
 		model.addAttribute("address", address);
-		List <Region> listRegions= regionService.getAll();
-		model.addAttribute("listRegions",listRegions);
+		List <Region> regions= regionService.getAll();
+		model.addAttribute("regions",regions);
 		return "settings/addresses/addressDetail";
 
-
 	}
-
-
 	@PostMapping("/updateAddress/{id}")
 	public String updateAddress(@PathVariable(value="id") Integer id ,
 								   @ModelAttribute("Address") Address address,Model model){

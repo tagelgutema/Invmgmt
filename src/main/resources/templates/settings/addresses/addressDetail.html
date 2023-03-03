@@ -58,7 +58,7 @@
                                         <div class="col-sm-6">
                                             <select  class="form-control" id="ddlAddressAdd"  name="regionid"  disabled="true" >
                                                 <option th:text="${null}"></option>
-                                                <option th:each="region:${listRegions}"
+                                                <option th:each="region:${regions}"
                                                        th:value="${region.regionId}"
                                                         th:selected="${address.regionid}==${region.regionId} ? TRUE : FALSE"
                                                         th:text="${region.regionName}" >
