@@ -7,28 +7,28 @@ import org.springframework.web.bind.annotation.RestController;
 @Controller
 public class ApplicationController {
 
-    @GetMapping("/index2")
+  /*  @GetMapping("/index2")
     public String testindex(){
         return "index2";
     }
-    /*@GetMapping("/index")
+    *//*@GetMapping("/index")
     public String home()
     {
         return "index";
-    }*/
+    }*//*
 
     @GetMapping("/_layout")
     public String layoutpage()
     {
         return "_layout";
-    }
+    }*/
 
    /* @GetMapping("/employees")
     public String employeePage()
     {
         return  "/employees/index";
     }*/
-    @GetMapping("/Settings")
+    /*@GetMapping("/Settings")
     public String settingsPage()
     {
         return  "/Settings/index";
@@ -50,6 +50,6 @@ public class ApplicationController {
     public String officeLoctionsPage()
     {
         return  "/officeLocations/index";
-    }
+    }*/
 
 }

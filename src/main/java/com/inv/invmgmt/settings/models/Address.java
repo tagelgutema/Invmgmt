@@ -45,7 +45,17 @@ public class Address {
 
 	private Integer regionid;
 
-
-
-
+	@Override
+	public String toString() {
+		return "Address{" +
+				"addressId=" + addressId +
+				", districtName='" + districtName + '\'' +
+				", woreda='" + woreda + '\'' +
+				", kebele='" + kebele + '\'' +
+				", houseNo='" + houseNo + '\'' +
+				", addressDescription='" + addressDescription + '\'' +
+				", region=" + region +
+				", regionid=" + regionid +
+				'}';
+	}
 }

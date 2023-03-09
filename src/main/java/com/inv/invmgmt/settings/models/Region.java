@@ -33,5 +33,13 @@ public class Region {
 	@OneToMany(mappedBy = "regionid", cascade = CascadeType.ALL)
 	private List<Address> address;
 
-
+	@Override
+	public String toString() {
+		return "Region{" +
+				"regionId=" + regionId +
+				", regionName='" + regionName + '\'' +
+				", regionDescription='" + regionDescription + '\'' +
+				", address=" + address +
+				'}';
+	}
 }

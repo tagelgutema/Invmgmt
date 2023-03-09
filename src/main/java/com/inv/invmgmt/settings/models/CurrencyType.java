@@ -3,7 +3,10 @@ package com.inv.invmgmt.settings.models;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.inv.invmgmt.products.models.Product;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "tblCurrencyType")
@@ -44,12 +47,8 @@ public class CurrencyType {
 		this.currencyTypeDescription = currencyTypeDescription;
 	}
 
-	@Override
-	public String toString() {
-		return "CurrencyType{" +
-				"currencyTypeId=" + currencyTypeId +
-				", currencyTypeName='" + currencyTypeName + '\'' +
-				", currencyTypeDescription='" + currencyTypeDescription + '\'' +
-				'}';
-	}
+
+	@OneToMany(mappedBy = "currencytypeid", cascade = CascadeType.ALL)
+	private List<Product> product;
+
 }

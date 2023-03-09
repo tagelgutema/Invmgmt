@@ -3,8 +3,11 @@ package com.inv.invmgmt.settings.models;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.inv.invmgmt.products.models.Product;
 import com.mysql.cj.x.protobuf.MysqlxDatatypes;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "tblSerValue")
@@ -46,12 +49,7 @@ public class SERValue {
 		this.serMonth = serMonth;
 	}
 
-	@Override
-	public String toString() {
-		return "SERValue{" +
-				"serId=" + serId +
-				", serValue=" + serValue +
-				", serMonth='" + serMonth + '\'' +
-				'}';
-	}
+	@OneToMany(mappedBy = "serid", cascade = CascadeType.ALL)
+	private List<Product> product;
+
 }

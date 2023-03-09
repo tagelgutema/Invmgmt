@@ -37,7 +37,10 @@ public class AddressController {
 
 	@GetMapping("/addressAdd")
 	public String addressAdd(Model model) {
+
+
 		addModelAttribute(model);
+
 
 		return "settings/addresses/addressAdd";
 	}

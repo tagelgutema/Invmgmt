@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="https://www.thymeleaf.org"
+      layout:decorate="~{_layout}">
+
+<body>
+<div layout:fragment="content">
+
+    <div class="row">
+        <form  class="form-horizontal"  th:action="@{/updateProductModel/{id}(id=${productModel.modelId})}"  th:object="${productModel}"  method="POST">
+            <div class="col-lg-12">
+                <div class="container" style="width: 70%">
+                    <div class="row">
+                        <div class="col-lg-9">
+                            <section class="panel">
+                                <header class="panel-heading">
+                                    Edit Product Model Record
+                                </header>
+                                <div class="panel-body">
+                                    <div class="form-group">
+
+                                        <div class="col-sm-6">
+                                            <input  type="hidden" th:field="*{modelId}" >
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">Product Model Name</label>
+                                        <div class="col-sm-6">
+                                            <input type="text"  th:field="*{modelName}" size="16" class="form-control" required >
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">Product Model Brand</label>
+                                        <div class="col-sm-6">
+                                            <input type="text"  th:field="*{modelBrand}" size="16" class="form-control" required >
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">Product Model Description</label>
+                                        <div class="col-sm-6">
+                                            <input  type="text" th:field="*{modelDescription}" size="16" class="form-control" required >
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                            <section class="panel">
+                                <div class="panel-body">
+                                    <button type="submit" class="btn btn-success"> Save </button>
+                                    <a href="/productModelsList/page" class="btn btn-warning"> Exit </a>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+</body>
+</html>

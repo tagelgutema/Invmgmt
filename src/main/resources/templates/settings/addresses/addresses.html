@@ -69,16 +69,18 @@
             </th>
             <th><i class="icon_cogs"></i> Action</th>
           </tr>
-          <tr th:each="address: ${addresses}">
 
+          <th:block th:each="address: ${addresses}">
+         <tr >
             <td  th:text="${address.addressId}"></td>
             <td  th:text="${address.districtName}"></td>
             <td  th:text="${address.woreda}"></td>
             <td  th:text="${address.kebele}"></td>
             <td  th:text="${address.houseNo}"></td>
             <td  th:text="${address.addressDescription}"></td>
-             <td th:text="${address.regionid}"></td>
-          <td>
+             <td  th:text="${address.region.regionName}"></td>
+
+             <td>
               <div class="btn-group">
                 <a class="btn btn-primary" th:href="@{/addressDetail/{id}(id=${address.addressId})}"><i class="icon_plus_alt2"></i></a>
                 <a class="btn btn-success"
@@ -88,8 +90,9 @@
                    th:href="@{'/addresses/delete/'+ ${address.addressId}}"><i class="icon_close_alt2"></i></a>
               </div>
             </td>
-
           </tr>
+          </th:block>
+
           </tbody>
         </table>
         &nbsp;<div th:if="${totalPages > 1 }"> &nbsp;
