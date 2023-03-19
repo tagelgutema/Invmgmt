@@ -71,6 +71,12 @@ public class ProductController {
 
 	@PostMapping("/saveProducts")
 	public String saveProduct(@ModelAttribute(value="Product") Product product) {
+		//String pCurrent= "exists";
+		if(product.getProductCurrent()=="issued"){
+			product.setProductCurrent("issued");
+		}else{
+			product.setProductCurrent("exists");
+		}
 		productService.saveProduct(product);
 		return "redirect:/productsList/page";
 	}
@@ -102,12 +108,18 @@ public class ProductController {
 
 	@GetMapping("/productEdit/{id}")
 	public String editProduct(@PathVariable(value="id") Integer id ,Model model){
-		addModelAttribute(model);
+	//	addModelAttribute(model);
 		Product product =productService.searchProductById(id);
 
 		//List <Region> region= regionService.getAll();
 		//List<Category> categories=categoryService.getAll();
 		model.addAttribute("product", product);
+		model.addAttribute("productModels", productModelService.getAll());
+		model.addAttribute("categories",categoryService.getAll());
+		model.addAttribute("vendors",vendorService.getAll());
+		model.addAttribute("productStatuses",productStatusService.getAll());
+		model.addAttribute("serValues",serValueService.getAll());
+		model.addAttribute("currencyTypes",currencyTypeService.getAll());
 
 		//model.addAttribute("regions",region);
 
@@ -120,8 +132,8 @@ public class ProductController {
 		//addModelAttribute(model);
 
 		Product product =productService.searchProductById(id);
-		model.addAttribute("product", product);
-	//	List <Region> regions= regionService.getAll();
+		model.addAttribute("Product", product);
+	//List <Region> regions= regionService.getAll();
 		//model.addAttribute("regions",regions);
 		return "products/product/productDetail";
 
@@ -130,7 +142,9 @@ public class ProductController {
 	public String updateProduct(@PathVariable(value="id") Integer id ,
 								@ModelAttribute("Product") Product product,Model model){
 
+
 		//get region from database by id
+		//model.addAttribute("product",productService.getAll());
 		Product existingProduct= productService.searchProductById(id);
 		existingProduct.setProductId(product.getProductId());
 		existingProduct.setProductName(product.getProductName());
@@ -143,7 +157,6 @@ public class ProductController {
 		existingProduct.setSerialNumber(product.getSerialNumber());
 		existingProduct.setPsmTag(product.getPsmTag());
 
-
 		existingProduct.setProductCompliance(product.getProductCompliance());
 		
 		existingProduct.setCategoryid(product.getCategoryid());
@@ -153,7 +166,7 @@ public class ProductController {
 		existingProduct.setCurrencytypeid(product.getCurrencytypeid());
 		existingProduct.setProductModel(product.getProductModel());
 		existingProduct.setProductRemark(product.getProductRemark());
-
+		existingProduct.setProductCurrent(product.getProductCurrent());
 
 		//save record
 		productService.updateProduct(existingProduct);

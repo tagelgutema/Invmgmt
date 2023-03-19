@@ -55,26 +55,44 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="control-label col-sm-4">Employee Address</label>
+                                        <label class="control-label col-sm-4">Job Title</label>
                                         <div class="col-sm-6">
-                                            <input name="addressid" type="text"  size="16" class="form-control" required>
+                                            <select  class="form-control" id="ddljobtitleAdd"  name="jobtitleid">
+                                                <option>-SELECT-</option>
+                                                <option th:each="jobTitle:${jobTitles}"
+                                                        th:value="${jobTitle.jobTitleId}"
+                                                        th:text="${jobTitle.jobTitleName}">
+                                                </option>
+                                            </select>
                                         </div>
                                     </div>
+
                                     <div class="form-group">
-                                        <label class="control-label col-sm-4">Employee Job Title</label>
+                                        <label class="control-label col-sm-4">Address </label>
                                         <div class="col-sm-6">
-                                            <input name="jobtitleid" type="text"  size="16" class="form-control" required>
+                                            <select  class="form-control" id="ddladdresAdd"  name="addressid">
+                                                <option>-SELECT-</option>
+                                                <option th:each="address:${addresses}"
+                                                        th:value="${address.addressId}"
+                                                        th:text="${address.districtName}">
+                                                </option>
+                                            </select>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="control-label col-sm-4">Employee Type</label>
                                         <div class="col-sm-6">
-                                            <input name="employeetypeid" type="text"  size="16" class="form-control" required>
+                                            <select  class="form-control" id="ddlAddressAdd"  name="employeetypeid">
+                                                <option>-SELECT-</option>
+                                                <option th:each="employeeType:${employeeTypes}"
+                                                        th:value="${employeeType.employeeTypeId}"
+                                                        th:text="${employeeType.employeeTypeName}">
+                                                </option>
+                                            </select>
                                         </div>
                                     </div>
-
-                                </div>
+                              </div>
                             </section>
                             <section class="panel">
                                 <div class="panel-body">

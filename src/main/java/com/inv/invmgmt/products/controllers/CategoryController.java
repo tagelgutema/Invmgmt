@@ -75,7 +75,6 @@ public class CategoryController {
 		return "products/category/categoryDetail";
 	}
 
-
 	@PostMapping("/updateCategory/{id}")
 	public String updateCategory(@PathVariable(value="id") Integer id ,
 								   @ModelAttribute("Category") Category category,Model model){

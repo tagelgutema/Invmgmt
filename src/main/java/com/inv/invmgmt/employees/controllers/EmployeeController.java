@@ -2,7 +2,11 @@
 package com.inv.invmgmt.employees.controllers;
 
 import com.inv.invmgmt.employees.models.Employee;
+import com.inv.invmgmt.employees.models.EmployeeType;
 import com.inv.invmgmt.employees.services.EmployeeService;
+import com.inv.invmgmt.employees.services.EmployeeTypeService;
+import com.inv.invmgmt.employees.services.JobTitleService;
+import com.inv.invmgmt.settings.services.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -18,6 +22,26 @@ public class EmployeeController {
 	@Autowired
 	private EmployeeService employeeService;
 
+	@Autowired
+	private AddressService addressService ;
+
+	@Autowired
+	private EmployeeTypeService employeeTypeService ;
+
+	@Autowired
+	private JobTitleService jobTitleService ;
+
+
+
+	public Model addModelAttribute(Model model){
+
+		model.addAttribute("employees", employeeService.getAll());
+		model.addAttribute("employeeTypes",employeeTypeService.getAll());
+		model.addAttribute("addresses",addressService.getAll());
+		model.addAttribute("jobTitles",jobTitleService.getAll());
+
+		return model;
+	}
 	@GetMapping("/employees")
 	public String getIndexEmployee(Model model) {
 		List<Employee> employees = employeeService.getAll();
@@ -27,7 +51,9 @@ public class EmployeeController {
 	}
 
 	@GetMapping("/employeeAdd")
-	public String employeeAdd() {
+	public String employeeAdd(Model model) {
+		addModelAttribute(model);
+
 		return "employees/employee/employeeAdd";
 	}
 
@@ -64,7 +90,7 @@ public class EmployeeController {
 
 	@GetMapping("/employeeEdit/{id}")
 	public String editEmployee(@PathVariable(value="id") Integer id ,Model model){
-
+		addModelAttribute(model);
 		Employee employee =employeeService.searchEmployeeById(id);
 		model.addAttribute("employee", employee);
 		return "employees/employee/employeeEdit";
@@ -72,7 +98,7 @@ public class EmployeeController {
 
 	@GetMapping("/employeeDetail/{id}")
 	public String detailEmployee(@PathVariable(value="id") Integer id ,Model model){
-
+		addModelAttribute(model);
 		Employee employee =employeeService.searchEmployeeById(id);
 		model.addAttribute("employee", employee);
 		return "employees/employee/employeeDetail";
@@ -96,7 +122,7 @@ public class EmployeeController {
 		existingEmployee.setPhoneNo(employee.getPhoneNo());
 
 		existingEmployee.setAddressid(employee.getAddressid());
-		existingEmployee.setJobTitle(employee.getJobTitle());
+		existingEmployee.setJobtitleid(employee.getJobtitleid());
 		existingEmployee.setEmployeetypeid(employee.getEmployeetypeid());
 
 				//save record

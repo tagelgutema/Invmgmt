@@ -92,5 +92,8 @@ public class Product {
 	@Column(name = "product_remark")
 	private String productRemark;
 
+	@Column(name = "product_Current" )
+	private String productCurrent;
+
 
 }
